@@ -43,7 +43,7 @@ level = int(
 dificuldade(level)
 os.system('clear')
 
-if type(dificuldade(level)) == int:
+if type(dificuldade(level)) == int: 
     sorteado = random.randint(numeros[0], numeros[1])
     print("Dica: o número está entre {} e {}. Boa sorte! \n\n" .format(
         numeros[0], numeros[1]))
@@ -51,14 +51,17 @@ if type(dificuldade(level)) == int:
 
     while chute != sorteado:
         chute = int(input("Chute: "))
-        todos_chutes.append(chute)
-        contador += 1
-        if chute in range(numeros[0], numeros[1] + 1):
-            print(posicao(chute, sorteado))
+        if chute in todos_chutes:
+            print("Ops, você já chutou esse valor.")
         else:
-            print(
-                "Hey, lembre-se que o número a ser adivinhado está entre {} e {}\n" .format(
-                    numeros[0], numeros[1]))
+            todos_chutes.append(chute)
+            contador += 1
+            if chute in range(numeros[0], numeros[1] + 1):
+                print(posicao(chute, sorteado))
+            else:
+                print(
+                    "Hey, lembre-se que o número a ser adivinhado está entre {} e {}\n" .format(
+                        numeros[0], numeros[1]))
 
     if contador != 1:
         print("Você deu {} chutes para chegar ao número {}.\n" .format(
